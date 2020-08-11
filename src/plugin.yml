@@ -1,0 +1,11 @@
+name: NubladaLecterns
+version: 1.0
+author: aurgiyalgo
+api-version: 1.15
+main: me.aurgiyalgo.NubladaLecterns.NubladaLecterns
+commands:
+  nubladalecterns:
+    permission: nubladalecterns.use
+permissions:
+  nubladalecterns.use:
+    default: op
