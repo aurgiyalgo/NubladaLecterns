@@ -75,6 +75,12 @@ public class NubladaLecterns extends JavaPlugin implements Listener, CommandExec
         if (book == null) return;
         BookMeta meta = (BookMeta) book.getItemMeta();
         if (!meta.getAuthor().equals("Nublada Servidor")) return;
+        event.setCancelled(true);
+        if (event.getPlayer().getLevel() < 10) {
+        	event.getPlayer().sendMessage(ChatColor.RED + "Necesitas 10 niveles de experiencia para usar un atril de teletransporte");
+        	return;
+        }
+        event.getPlayer().setLevel(event.getPlayer().getLevel() - 10);
         double x, y, z;
         String destination;
         float yaw, pitch;
@@ -87,7 +93,6 @@ public class NubladaLecterns extends JavaPlugin implements Listener, CommandExec
         World world = Bukkit.getWorld(ChatColor.stripColor(meta.getLore().get(5)));
         event.getPlayer().teleport(new Location(world, x, y, z, yaw, pitch));
         event.getPlayer().sendTitle("", ChatColor.translateAlternateColorCodes('&', "&fTe has teletransportado a &6&l" + destination), 10, 50, 10);
-        event.setCancelled(true);
     }
 
     @EventHandler
